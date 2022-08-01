@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 //Register REDIS Location
 builder.Services.AddStackExchangeRedisCache(options =>
 {
-    options.Configuration = builder.Configuration.GetValue<string>("CachSettings:ConnectionSetting");
+    options.Configuration = builder.Configuration.GetValue<string>("CacheSettings:ConnectionString");
 });
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
