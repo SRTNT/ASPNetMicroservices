@@ -1,4 +1,4 @@
-﻿using Discount.API.Entities;
+﻿ using Discount.API.Entities;
 using Discount.API.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
