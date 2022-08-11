@@ -10,7 +10,6 @@ namespace Basket.API.Entities
         public string? UserName { get; set; }
         public decimal TotalPrice { get; set; }
 
-
         // BillingAddress
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
@@ -20,8 +19,7 @@ namespace Basket.API.Entities
         public string? State { get; set; }
         public string? ZipCode { get; set; }
 
-
-        // Payment   
+        // Payment
         public string? CardName { get; set; }
         public string? CardNumber { get; set; }
         public string? Expiration { get; set; }
