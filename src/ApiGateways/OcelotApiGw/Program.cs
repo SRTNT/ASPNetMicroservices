@@ -1,6 +1,34 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+//using Common.Logging;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+//using Serilog;
 
-app.MapGet("/", () => "Hello World!");
+namespace OcelotApiGw
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
 
-app.Run();
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                //.ConfigureAppConfiguration((hostingContext, config) =>
+                //{
+                //    config.AddJsonFile($"ocelot.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true);
+                //})
+                //.UseSerilog(SeriLogger.Configure)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureLogging((hosttingContext, LoggingBuilder) =>
+                {
+                    LoggingBuilder.AddConfiguration(hosttingContext.Configuration.GetSection("Logging"));
+                    LoggingBuilder.AddConsole();
+                    LoggingBuilder.AddDebug();
+                });
+    }
+}
