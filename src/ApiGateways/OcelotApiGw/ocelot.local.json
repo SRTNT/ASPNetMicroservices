@@ -14,6 +14,7 @@
       "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
       "FileCacheOptions": { "TtlSeconds": 30 }
     },
+    //Catalog API Use ID
     {
       "DownstreamPathTemplate": "/api/v1/Catalog/{id}",
       "DownstreamScheme": "http",
@@ -24,8 +25,9 @@
         }
       ],
       "UpstreamPathTemplate": "/Catalog/{id}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ]      
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
+    //Product API Use Category name
     {
       "DownstreamPathTemplate": "/api/v1/Catalog/GetProductByCategory/{category}",
       "DownstreamScheme": "http",
@@ -77,9 +79,9 @@
       "RateLimitOptions": {
         "ClientWhitelist": [],
         "EnableRateLimiting": true,
-        "Period": "3s",
-        "PeriodTimespan": 1,
-        "Limit": 1
+        "Period": "3s",//Time for check
+        "PeriodTimespan": 1,//time for idle if has more request
+        "Limit": 1//max number of request
       }
     },
     //Discount API
