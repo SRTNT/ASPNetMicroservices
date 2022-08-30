@@ -20,10 +20,9 @@ builder.Services.AddSwaggerGen();
 #region MassTransit-RabbitMQ Configuration
 builder.Services.AddMassTransit(config =>
 {
+    config.AddConsumer<Ordering.API.EventBusConsumer.BasketCheckoutConsumer>();
     config.UsingRabbitMq((ctx, cfg) =>
     {
-        config.AddConsumer<Ordering.API.EventBusConsumer.BasketCheckoutConsumer>();
-
         cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
         //cfg.UseHealthCheck(ctx);
 
